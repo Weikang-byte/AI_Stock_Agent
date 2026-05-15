@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A股强势复盘台</title>
+    <link rel="stylesheet" href="./styles.css?v=20260515-2" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">A-Share Momentum Intelligence</p>
+          <h1>A股强势复盘台</h1>
+          <p class="subtitle">聚焦最近一个完整交易日中涨势较强、成交活跃、收盘位置健康的股票样本。</p>
+        </div>
+        <div class="status-cluster" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="dataStatus">加载日报中</span>
+          <time id="reportDate">--</time>
+        </div>
+      </header>
+
+      <main>
+        <section class="market-strip" aria-label="市场摘要">
+          <article class="metric">
+            <span>全市场样本</span>
+            <strong id="metricTotal">--</strong>
+            <small id="metricSource">--</small>
+          </article>
+          <article class="metric">
+            <span>上涨占比</span>
+            <strong id="metricAdvanceRatio">--</strong>
+            <small id="metricAdvancers">--</small>
+          </article>
+          <article class="metric accent">
+            <span>强势股数量</span>
+            <strong id="metricStrong">--</strong>
+            <small id="metricStrongRule">--</small>
+          </article>
+          <article class="metric">
+            <span>涨停附近</span>
+            <strong id="metricLimitUp">--</strong>
+            <small id="metricStrongClose">--</small>
+          </article>
+          <article class="metric">
+            <span>强势股成交额</span>
+            <strong id="metricAmount">--</strong>
+            <small id="metricMedianTurnover">--</small>
+          </article>
+        </section>
+
+        <section class="insight-band" aria-label="观察摘要">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Daily Brief</p>
+              <h2>观察摘要</h2>
+            </div>
+            <button id="refreshBtn" class="icon-button" type="button" title="刷新日报" aria-label="刷新日报">
+              <span aria-hidden="true">↻</span>
+            </button>
+          </div>
+          <div id="insightList" class="insight-list"></div>
+        </section>
+
+        <section class="dashboard-grid" aria-label="统计图表">
+          <article class="panel wide">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Leaders</p>
+                <h2>涨幅前列</h2>
+              </div>
+              <span id="topChartHint" class="panel-note">--</span>
+            </div>
+            <canvas id="topMoversChart" height="320"></canvas>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Distribution</p>
+                <h2>涨跌分布</h2>
+              </div>
+              <span class="panel-note">全样本</span>
+            </div>
+            <canvas id="distributionChart" height="280"></canvas>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Boards</p>
+                <h2>板块结构</h2>
+              </div>
+              <span class="panel-note">强势样本</span>
+            </div>
+            <canvas id="boardChart" height="280"></canvas>
+          </article>
+
+          <article class="panel wide">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Liquidity</p>
+                <h2>涨幅与成交额</h2>
+              </div>
+              <span id="scatterHint" class="panel-note">--</span>
+            </div>
+            <canvas id="liquidityChart" height="320"></canvas>
+          </article>
+        </section>
+
+        <section class="table-band" aria-label="强势股票列表">
+          <div class="section-heading table-heading">
+            <div>
+              <p class="eyebrow">Watchlist</p>
+              <h2>强势股票样本</h2>
+            </div>
+            <div class="filters">
+              <label>
+                <span>市场</span>
+                <select id="boardFilter"></select>
+              </label>
+              <label>
+                <span>最低涨幅</span>
+                <input id="pctFilter" type="range" min="0" max="30" step="0.5" value="5" />
+              </label>
+              <output id="pctFilterValue">5.0%</output>
+              <label class="search-box">
+                <span>搜索</span>
+                <input id="searchInput" type="search" placeholder="代码 / 名称" />
+              </label>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>排名</th>
+                  <th>股票</th>
+                  <th>市场</th>
+                  <th>最新价</th>
+                  <th>涨跌幅</th>
+                  <th>成交额</th>
+                  <th>换手率</th>
+                  <th>估值</th>
+                  <th>信号</th>
+                </tr>
+              </thead>
+              <tbody id="stockTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="risk-band" aria-label="风险提示">
+          <strong>风险提示</strong>
+          <span>本页面仅用于数据整理和统计观察，不构成投资建议。A股存在价格波动、流动性、停复牌、财报和政策等风险，任何交易决策都应结合自身风险承受能力和进一步研究。</span>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js?v=20260515-2"></script>
+  </body>
+</html>
