@@ -44,7 +44,7 @@ python3 scripts/daily_report.py --min-pct 6 --min-amount 100000000 --top 200
 
 推送到 GitHub 后，它会：
 
-1. 在每周一到周五北京时间 `07:40` 自动运行 `python scripts/daily_report.py`
+1. 在每周二到周六北京时间 `07:40` 自动运行 `python scripts/daily_report.py`，生成前一个交易日的复盘
 2. 更新 `data/report-latest.json`、`data/history.json` 和 `data/reports/`
 3. 自动提交更新后的日报数据
 4. 部署静态网站到 GitHub Pages
@@ -68,7 +68,7 @@ crontab -e
 加入一行，把路径替换成你的实际路径：
 
 ```cron
-40 7 * * 1-5 cd /Users/weikangchen/Documents/Stocks && /usr/local/bin/python3 scripts/daily_report.py >> daily_report.log 2>&1
+40 7 * * 2-6 cd /Users/weikangchen/Documents/Stocks && /usr/local/bin/python3 scripts/daily_report.py >> daily_report.log 2>&1
 ```
 
 如果希望收盘后复盘当天，把时间改为 `16:30` 或更晚。

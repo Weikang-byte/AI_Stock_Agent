@@ -3,8 +3,8 @@ name: Update A-share report and deploy site
 on:
   workflow_dispatch:
   schedule:
-    # GitHub cron uses UTC. This is 07:40 Asia/Shanghai, Monday-Friday.
-    - cron: "40 23 * * 0-4"
+    # GitHub cron uses UTC. This is 07:40 Asia/Shanghai, Tuesday-Saturday.
+    - cron: "40 23 * * 1-5"
   push:
     branches:
       - main
