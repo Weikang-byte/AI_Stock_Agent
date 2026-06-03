@@ -102,5 +102,13 @@
     "limit_up_count": 19,
     "advance_ratio": 16.55,
     "selected_amount": 73019793193.0
+  },
+  {
+    "report_date": "2026-06-02",
+    "generated_at": "2026-06-03T10:12:01+08:00",
+    "selected_count": 160,
+    "limit_up_count": 46,
+    "advance_ratio": 37.24,
+    "selected_amount": 234663410833.0
   }
 ]
